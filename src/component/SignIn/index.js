@@ -2,16 +2,19 @@ import Style from "./SignIn.module.css";
 
 import { Modal, Form, Button } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { API, setAuthToken } from "../../config/API";
 const SignIn = (props) => {
   const router = useHistory();
-  const { handleClose, showSignIn, handleSignIn, load } = props;
+  const { handleClose, showSignIn, handleSignIn, load, ToSignUp } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
-
+  function toRegist() {
+    handleClose();
+    ToSignUp();
+  }
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -100,7 +103,11 @@ const SignIn = (props) => {
           </Form>
           <p className={Style.Dont}>
             Don't have an account?
-            <Link style={{ color: "#613D2B" }}> klik Here</Link>
+            <strong
+              style={{ color: "#613D2B", cursor: "pointer", marginLeft: "5px" }}
+              onClick={toRegist}>
+              clik Here
+            </strong>
           </p>
         </div>
       </Modal>

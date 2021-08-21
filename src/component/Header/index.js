@@ -210,11 +210,13 @@ const Header = () => {
                 <SignIn
                   showSignIn={showSignIn}
                   handleSignIn={dispatch}
+                  ToSignUp={() => setShowSignUp(true)}
                   handleClose={() => setShowSignIn(false)}
                 />
                 <SignUp
                   handleClose={() => setShowSignUp(false)}
                   showSignUp={showSignUp}
+                  ToSignIn={() => setShowSignIn(true)}
                   handleSignUp={dispatch}
                 />
               </>

@@ -6,7 +6,7 @@ import { API, setAuthToken } from "../../config/API";
 
 import Style from "./SignUp.module.css";
 const SignUp = (props) => {
-  const { handleClose, showSignUp, handleSignUp } = props;
+  const { handleClose, showSignUp, handleSignUp, ToSignIn } = props;
 
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
@@ -16,6 +16,10 @@ const SignUp = (props) => {
     fullname: "",
     listId: "",
   });
+  function toLogin() {
+    handleClose();
+    ToSignIn();
+  }
 
   const handleChange = (e) => {
     setData({
@@ -112,7 +116,15 @@ const SignUp = (props) => {
           </Button>
           <p className={Style.Dont}>
             Don't have an account?
-            <Link style={{ color: "#613D2B" }}>klik Here</Link>
+            <strong
+              onClick={toLogin}
+              style={{
+                color: "#613D2B",
+                cursor: "pointer",
+                marginLeft: "5px",
+              }}>
+              clik Here
+            </strong>
           </p>
         </Form>
       </div>
